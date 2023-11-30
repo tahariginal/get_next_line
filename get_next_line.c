@@ -6,7 +6,7 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 22:43:58 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/11/30 22:44:38 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/11/30 23:21:52 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,29 +124,5 @@ char	*get_next_line(int fd)
 // {
 //     int fd = open("src.txt", O_RDWR);
 //     char *p = get_next_line(fd);
-//     printf("%s",p);
-//      p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
-//     printf("%s",p);
-//     p = get_next_line(fd);
 //     printf("%s",p);
 // }

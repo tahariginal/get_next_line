@@ -6,7 +6,7 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:03:13 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/11/30 22:48:49 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/11/30 23:22:54 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (*s2)
 		*str++ = *s2++;
 	*str = '\0';
+	free(s1);
+	free(s2);
 	return (start);
 }
