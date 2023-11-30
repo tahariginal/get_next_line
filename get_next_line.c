@@ -1,11 +1,13 @@
 #include "get_next_line.h"
-#define BUFFER_SIZE 1
+
 int     tenlen(char *str)
 {
     int i;
 
     i = 0;
     while (str[i] && str[i] != '\n')
+        i++;
+    if (str[i] == '\n')
         i++;
     return (i);
 }
@@ -44,11 +46,7 @@ char    *get_line(char *holder)
     char    *line;
     int     i;
 
-    i = 0;
-    while (holder[i] && holder[i] != '\n')
-		i++;
-	if (holder[i] == '\n')
-		i++;
+    i = tenlen(holder);
 	line = malloc(i + 1);
 	i = 0;
 	while (holder[i] && holder[i] != '\n')
@@ -64,6 +62,7 @@ char    *get_line(char *holder)
     line[i] = '\0';
     return (line);
 }
+
 char    *get_rest(char *holder)
 {
     char *rest;
