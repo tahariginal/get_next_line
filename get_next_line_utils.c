@@ -6,7 +6,7 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:03:13 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/11/30 22:22:26 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/11/30 22:48:49 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ size_t	str_len(char *str)
 char	*str_dup(char *str)
 {
 	size_t	len;
-	char	*new;
 	size_t	i;
+	char	*new;
 
 	if (str == NULL)
 		return (NULL);
@@ -48,7 +48,7 @@ char	*str_dup(char *str)
 	if (!new)
 		return (NULL);
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		new[i] = str[i];
 		i++;
