@@ -45,7 +45,8 @@ char    *get_line(char *holder)
 {
     char    *line;
     int     i;
-
+    if (!holder[0])
+        return (NULL);
     i = tenlen(holder);
 	line = malloc(i + 1);
 	i = 0;
@@ -95,7 +96,7 @@ char    *get_next_line(int fd)
     char    *line;
     static  char *holder;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
+    if (fd == -1 || BUFFER_SIZE <= 0)
         return (NULL);
     holder = get_characters(holder, fd);
     if (!holder)
@@ -110,7 +111,4 @@ int main()
     int fd = open("src.txt", O_RDWR);
     char *p = get_next_line(fd);
     printf("%s",p);
-    p = get_next_line(fd);
-    printf("%s",p);
-
 }

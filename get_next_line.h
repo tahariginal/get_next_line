@@ -16,6 +16,5 @@ int isten(char *s);
 size_t  str_len(char *str);
 char	*str_dup(char *str);
 char	*ft_strjoin(char  *s1, char  *s2);
-char	*copy(char *s1, char *s2, char *dest);
 
 #endif

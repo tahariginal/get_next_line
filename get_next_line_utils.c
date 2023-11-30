@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:03:13 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/11/24 23:03:05 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/11/30 22:22:26 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	isten(char *s)
 {
+	if (s == NULL)
+		return (0);
 	while (*s)
 	{
 		if (*s == '\n')
@@ -33,32 +35,14 @@ size_t	str_len(char *str)
 	return (c);
 }
 
-char	*copy(char *s1, char *s2, char *dest)
-{
-	while (*s1)
-	{
-		*dest = *(char *)s1;
-		dest++;
-		s1++;
-	}
-	while (*s2)
-	{
-		*dest = *(char *)s2;
-		dest++;
-		s2++;
-	}
-	*dest = '\0';
-	return (dest);
-}
-
 char	*str_dup(char *str)
 {
-	if (str == NULL)
-		return (NULL);
 	size_t	len;
 	char	*new;
 	size_t	i;
 
+	if (str == NULL)
+		return (NULL);
 	len = str_len(str);
 	new = malloc(len + 1);
 	if (!new)
@@ -72,15 +56,22 @@ char	*str_dup(char *str)
 	new[i] = '\0';
 	return (new);
 }
-char	*ft_strjoin(char  *s1, char  *s2)
+
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
+	char	*start;
 
 	if (!s1)
-		return (str_dup("\0"));
-	str = (char *)malloc((str_len(s1) + str_len(s2) + 1));
-	if (str == NULL)
+		return (str_dup(s2));
+	str = malloc((str_len(s1) + str_len(s2) + 1));
+	if (!str)
 		return (NULL);
-	copy(s1, s2, str);
-	return (str);
+	start = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (start);
 }
