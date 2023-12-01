@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 22:43:58 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/12/01 22:47:25 by tkoulal          ###   ########.fr       */
+/*   Created: 2023/12/01 22:35:12 by tkoulal           #+#    #+#             */
+/*   Updated: 2023/12/01 22:47:07 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -100,43 +100,15 @@ char	*get_rest(char *holder)
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*holder;
+	char *line;
+	static char *holder[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	holder = get_characters(holder, fd);
-	if (!holder)
+	holder[fd] = get_characters(holder[fd], fd);
+	if (!holder[fd])
 		return (NULL);
-	line = get_line(holder);
-	holder = get_rest(holder);
+	line = get_line(holder[fd]);
+	holder[fd] = get_rest(holder[fd]);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int		fd;
-// 	int		fd1;
-// 	char	*p;
-// 	char	*s;
-// 	int		i;
-
-// 	fd = open("src.txt", O_RDWR);
-// 	fd1 = open("src1.txt", O_RDWR);
-// 	i = 0;
-// 	while (1)
-// 	{
-// 		p = get_next_line(fd);
-// 		s= get_next_line(fd1);
-// 		printf("%d >> \"%s\"\n", i, p);
-// 		printf("%d >> \"%s\"\n", i, s);
-// 		i++;
-// 		if (p)
-// 			free(p);
-// 		if (s)
-// 			free(s);
-// 		else
-// 			break ;
-// 	}
-// 	return (0);
-// }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:03:13 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/12/01 22:22:09 by tkoulal          ###   ########.fr       */
+/*   Created: 2023/12/01 22:35:40 by tkoulal           #+#    #+#             */
+/*   Updated: 2023/12/01 22:46:46 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	tenlen(char *str)
 {
