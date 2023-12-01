@@ -6,24 +6,12 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 22:43:58 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/12/01 21:38:14 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/12/01 21:42:10 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <string.h>
-
-int	tenlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (str[i] == '\n')
-		i++;
-	return (i);
-}
 
 char	*get_characters(char *holder, int fd)
 {
@@ -39,23 +27,17 @@ char	*get_characters(char *holder, int fd)
 		bzero(str, BUFFER_SIZE);
 		i = read(fd, str, BUFFER_SIZE);
 		if (i <= 0)
-		{
-			break;
-		}
+			break ;
 		holder = ft_strjoin(holder, str);
 		if (!holder)
-		{
-			free(str);
-			return (NULL);
-		}
+			return (free(str), NULL);
 	}
 	if (i == -1)
 	{
 		free(holder);
 		holder = NULL;
 	}
-	free(str);
-	return (holder);
+	return (free(str), holder);
 }
 
 char	*get_line(char *holder)
@@ -122,12 +104,14 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int main()
+int	main(void)
 {
-    int fd = open("src.txt", O_RDWR);
-   char * p;
-   int i = 0;
-	
+	int		fd;
+	char	*p;
+	int		i;
+
+	fd = open("src.txt", O_RDWR);
+	i = 0;
 	while (1)
 	{
 		p = get_next_line(fd);

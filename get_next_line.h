@@ -6,7 +6,7 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 22:44:07 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/12/01 21:10:43 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/12/01 21:42:55 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #  define BUFFER_SIZE 3
 # endif
 
+int		tenlen(char *str);
 char	*get_next_line(int fd);
 int		isten(char *s);
 char	*str_cat(char *dest, char *src);

@@ -6,23 +6,22 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:03:13 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/11/30 23:22:54 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/12/01 21:43:14 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	isten(char *s)
+int	tenlen(char *str)
 {
-	if (s == NULL)
-		return (0);
-	while (*s)
-	{
-		if (*s == '\n')
-			return (1);
-		s++;
-	}
-	return (0);
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		i++;
+	return (i);
 }
 
 size_t	str_len(char *str)
@@ -69,6 +68,7 @@ char	*str_cat(char *dest, char *src)
 	dest[end_dest] = '\0';
 	return (dest);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
