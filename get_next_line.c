@@ -6,11 +6,12 @@
 /*   By: tkoulal <tkoulal@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 22:43:58 by tkoulal           #+#    #+#             */
-/*   Updated: 2023/11/30 23:21:52 by tkoulal          ###   ########.fr       */
+/*   Updated: 2023/12/01 21:38:14 by tkoulal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <string.h>
 
 int	tenlen(char *str)
 {
@@ -33,21 +34,25 @@ char	*get_characters(char *holder, int fd)
 	if (!str)
 		return (NULL);
 	i = 1;
-	while (i && !isten(str))
+	while (1)
 	{
+		bzero(str, BUFFER_SIZE);
 		i = read(fd, str, BUFFER_SIZE);
-		if (i == -1)
+		if (i <= 0)
 		{
-			free(str);
-			return (NULL);
+			break;
 		}
-		str[BUFFER_SIZE] = '\0';
 		holder = ft_strjoin(holder, str);
 		if (!holder)
 		{
 			free(str);
 			return (NULL);
 		}
+	}
+	if (i == -1)
+	{
+		free(holder);
+		holder = NULL;
 	}
 	free(str);
 	return (holder);
@@ -62,6 +67,7 @@ char	*get_line(char *holder)
 		return (NULL);
 	i = tenlen(holder);
 	line = malloc(i + 1);
+	bzero(line, i + 1);
 	i = 0;
 	while (holder[i] && holder[i] != '\n')
 	{
@@ -70,7 +76,6 @@ char	*get_line(char *holder)
 	}
 	if (holder[i] == '\n')
 		line[i] = holder[i];
-	line[i + 1] = '\0';
 	return (line);
 }
 
@@ -91,7 +96,7 @@ char	*get_rest(char *holder)
 	if (!rest)
 		return (NULL);
 	j = 0;
-	while (holder[i] && holder[i] != '\n')
+	while (holder[i])
 	{
 		rest[j] = holder[i];
 		i++;
@@ -107,7 +112,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*holder;
 
-	if (fd == -1 || BUFFER_SIZE <= 0)
+	if (fd == -1 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	holder = get_characters(holder, fd);
 	if (!holder)
@@ -120,10 +125,17 @@ char	*get_next_line(int fd)
 int main()
 {
     int fd = open("src.txt", O_RDWR);
-   char * p = get_next_line(fd);
-	printf("%s",p);
-	p = get_next_line(fd);
-    printf("%s",p);
-	p = get_next_line(fd);
-    printf("%s",p);
+   char * p;
+   int i = 0;
+	
+	while (1)
+	{
+		p = get_next_line(fd);
+		printf("%d >> \"%s\"\n", i++, p);
+		if (p)
+			free(p);
+		else
+			break ;
+	}
+	return (0);
 }
