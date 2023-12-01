@@ -1,18 +1,3 @@
 taha
 koulal
-text of the printing and typ
-esetting industry. Lorem Ipsum ha
-s been the industry's sta
-ndard dummy text ever since the 1500s,
- when an unknown printer took a galley
-  of type and scrambled it to make a type s
-  pecimen book. It has survived not only f
-  ive centuries, but also the leap into electronic t
-  ypesetting, remaining essentially u
-  nchanged. It was popularised in t
-  he 1960s with the release of Letraset sh
-  eets containing Lorem 
-  Ipsum passages, and more recently with deskt
-  op publishing software like Aldus PageMa
-  ker including versions of Lorem Ipsum.
-
+tahariginal

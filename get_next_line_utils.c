@@ -57,23 +57,28 @@ char	*str_dup(char *str)
 	return (new);
 }
 
+char	*str_cat(char *dest, char *src)
+{
+	size_t	end_dest;
+
+	end_dest = 0;
+	while (dest[end_dest])
+		end_dest++;
+	while (*src != '\0')
+		dest[end_dest++] = *src++;
+	dest[end_dest] = '\0';
+	return (dest);
+}
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	char	*start;
 
 	if (!s1)
 		return (str_dup(s2));
 	str = malloc((str_len(s1) + str_len(s2) + 1));
 	if (!str)
 		return (NULL);
-	start = str;
-	while (*s1)
-		*str++ = *s1++;
-	while (*s2)
-		*str++ = *s2++;
-	*str = '\0';
-	free(s1);
-	free(s2);
-	return (start);
+	str_cat(str, s1);
+	str_cat(str, s2);
+	return (str);
 }

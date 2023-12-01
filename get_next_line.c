@@ -69,11 +69,8 @@ char	*get_line(char *holder)
 		i++;
 	}
 	if (holder[i] == '\n')
-	{
 		line[i] = holder[i];
-		i++;
-	}
-	line[i] = '\0';
+	line[i + 1] = '\0';
 	return (line);
 }
 
@@ -84,17 +81,17 @@ char	*get_rest(char *holder)
 	int		j;
 
 	i = 0;
-	while (holder[i] && holder[i] != '\n')
-		i++;
-	if (holder[i] == '\n')
-		i++;
-	if (!holder[i])
+	i = tenlen(holder);
+	if (holder[i] == '\0')
+	{
+		free(holder);
 		return (NULL);
-	rest = malloc(str_len(holder) - i + 1);
+	}
+	rest = malloc((str_len(holder) - i) + 1);
 	if (!rest)
 		return (NULL);
 	j = 0;
-	while (holder[i])
+	while (holder[i] && holder[i] != '\n')
 	{
 		rest[j] = holder[i];
 		i++;
@@ -120,9 +117,13 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int main()
-// {
-//     int fd = open("src.txt", O_RDWR);
-//     char *p = get_next_line(fd);
-//     printf("%s",p);
-// }
+int main()
+{
+    int fd = open("src.txt", O_RDWR);
+   char * p = get_next_line(fd);
+	printf("%s",p);
+	p = get_next_line(fd);
+    printf("%s",p);
+	p = get_next_line(fd);
+    printf("%s",p);
+}
