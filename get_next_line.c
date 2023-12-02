@@ -30,7 +30,7 @@ char	*get_characters(char *holder, int fd)
 	i = 1;
 	while (1)
 	{
-		bzero(str, BUFFER_SIZE);
+		ft_bzero(str, BUFFER_SIZE);
 		i = read(fd, str, BUFFER_SIZE);
 		if (i <= 0)
 			break ;
@@ -58,7 +58,7 @@ char	*get_line(char *holder)
 		return (NULL);
 	i = tenlen(holder);
 	line = malloc(i + 1);
-	bzero(line, i + 1);
+	ft_bzero(line, i + 1);
 	i = 0;
 	while (holder[i] && holder[i] != '\n')
 	{
